@@ -15,37 +15,40 @@
             background: url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
+            overflow: hidden; /* Prevents horizontal scrolling on small screens */
         }
         .container {
             text-align: center;
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
             background: rgba(0, 0, 0, 0.6);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(5px);
+            max-width: 90%; /* Ensures the container doesn't overflow on small screens */
+            margin: 20px;
         }
         h1 {
-            margin-bottom: 25px;
-            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-size: 2em;
             font-weight: 700;
             color: #ffcc00;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
         #pissLevel {
-            font-size: 2.2em;
+            font-size: 2em;
             font-weight: bold;
             color: #ffffff;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-            margin-top: 10px; 
+            margin-top: 10px;
         }
         .emoji {
-            font-size: 2em;
-            margin-right: 15px;
+            font-size: 2.5em;
+            margin-right: 10px;
         }
         progress {
             width: 80%;
             height: 20px;
-            margin-top: 10px;  
+            margin-top: 15px;
             border-radius: 10px;
             background-color: #e0e0e0;
             border: none;
@@ -62,6 +65,22 @@
             margin-top: 20px;
             font-size: 0.9em;
             color: #d1d1d1;
+        }
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em; /* Smaller header on small screens */
+            }
+            #pissLevel {
+                font-size: 1.8em; /* Adjusted font size */
+            }
+            .emoji {
+                font-size: 2.2em; /* Smaller emojis on mobile */
+            }
+            progress {
+                width: 90%; /* Progress bar takes up more space */
+                height: 18px; /* Slightly smaller progress bar */
+            }
         }
     </style>
     <script src="https://unpkg.com/lightstreamer-client-web/lightstreamer.min.js"></script>
@@ -86,7 +105,7 @@
                 if (value !== null) {
                     document.getElementById("pissLevel").innerHTML =
                         '<span class="emoji">🧑🏽‍🚀🚽</span> ' + value + "%";
-                    document.getElementById("progressBar").value = value; 
+                    document.getElementById("progressBar").value = value;
                 }
             },
             onSubscription: function() {
